@@ -71,15 +71,14 @@ Login({ goRegister, goProducts }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-const register = async () => {
-
+const login = async () => {
   if (!username || !password) {
     alert("Enter username & password ❌");
     return;
   }
 
   try {
-    const res = await fetch(`${BASE_URL}/users/register`, {
+    const res = await fetch(`${BASE_URL}/users/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -87,13 +86,18 @@ const register = async () => {
       body: JSON.stringify({ username, password })
     });
 
-    const data = await res.text();
-    alert(data);
-
+    if (res.ok) {
+      localStorage.setItem("loggedIn", "true");
+      goProducts();
+    } else {
+      const data = await res.text();
+      alert(data || "Login failed ❌");
+    }
   } catch (err) {
-    alert("Error registering ❌");
+    alert("Error logging in ❌");
   }
 };
+
  return (
   <div className="login-container">
     <div className="login-box">
