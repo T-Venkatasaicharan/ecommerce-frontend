@@ -89,16 +89,18 @@ Login({ goRegister, goProducts }) {
     const data = await res.text();
     alert(data);
 
-    // ✅ ONLY allow login if success message
-    if (data.toLowerCase().includes("login successful")) {
+    console.log("Response:", data); // 🔍 debug
+
+    // ✅ ONLY allow login when exact success
+    if (data.trim() === "Login successful ✅") {
       localStorage.setItem("loggedIn", "true");
       goProducts();
     }
 
   } catch (err) {
+    console.error(err);
     alert("Server error ❌");
   }
-
   // ✅ Step 1: validation
   if (!username || !password) {
     alert("Enter username & password ❌");
@@ -162,7 +164,14 @@ function Register({ goLogin }) {
   const [password, setPassword] = useState("");
 
   const register = async () => {
-    await fetch(`${BASE_URL}/users/register`, {
+
+  if (!username || !password) {
+    alert("Enter username & password ❌");
+    return;
+  }
+
+  try {
+    const res = await fetch(`${BASE_URL}/users/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -170,9 +179,13 @@ function Register({ goLogin }) {
       body: JSON.stringify({ username, password })
     });
 
-    alert("User Registered!");
-    goLogin();
-  };
+    const data = await res.text();
+    alert(data);
+
+  } catch (err) {
+    alert("Error registering ❌");
+  }
+};
 
   return (
     <div>
