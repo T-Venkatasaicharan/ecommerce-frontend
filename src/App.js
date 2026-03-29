@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "./App.css"
+import "./App.css";
 const BASE_URL = "https://ecommerce-backend-v764.onrender.com";
 function App() {
   const [page, setPage] = useState(
