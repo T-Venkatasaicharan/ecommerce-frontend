@@ -211,7 +211,8 @@ function Products({ goCart, cart, setCart }) {
 //////////////// CART //////////////////
 function Cart({ goProducts, cart }) {
   const [address, setAddress] = useState("");
-  //const [payment, setPayment] = useState("COD");
+  const [payment, setPayment] = useState("COD");
+
 
   const total = cart.reduce((sum, item) => sum + item.price, 0);
 
@@ -234,11 +235,12 @@ function Cart({ goProducts, cart }) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-  status: "PLACED",
-  totalAmount: total,
-  userId: 1
-})
-    });
+      status: "PLACED",
+      totalAmount: total,
+      userId: 1,
+      payment: payment
+    })
+  });
 
     console.log("Response received", res); // 🔥 ADD
 
@@ -267,7 +269,7 @@ function Cart({ goProducts, cart }) {
         ))
       )}
 
-      <h3>Total: ₹{total}</h3>)
+      <h3>Total: ₹{total}</h3>
 
       <input
         placeholder="Enter Address"
@@ -275,6 +277,7 @@ function Cart({ goProducts, cart }) {
       /><br /><br />
 
       <select onChange={(e) => setPayment(e.target.value)}>
+        <option value="">Select Payment</option>
         <option value="COD">Cash on Delivery</option>
       </select><br /><br />
 
