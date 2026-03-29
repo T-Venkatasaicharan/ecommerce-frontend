@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import "./App.css"
+const BASE_URL = "https://ecommerce-backend-v764.onrender.com";
 function App() {
   const [page, setPage] = useState(
   localStorage.getItem("loggedIn") ? "products" : "login"
@@ -65,7 +66,8 @@ function App() {
 }
 
 //////////////// LOGIN //////////////////
-function Login({ goRegister, goProducts }) {
+function 
+Login({ goRegister, goProducts }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const login = async () => {
@@ -77,7 +79,7 @@ function Login({ goRegister, goProducts }) {
   }
 
   try {
-    const res = await fetch("https://ecommerce-backend-v764.onrender.com/users/login", {
+    const res = await fetch(`${BASE_URL}/users/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -133,7 +135,7 @@ function Register({ goLogin }) {
   const [password, setPassword] = useState("");
 
   const register = async () => {
-    await fetch("https://ecommerce-backend-v764.onrender.com/users/register", {
+    await fetch(`${BASE_URL}/users/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -229,7 +231,7 @@ function Cart({ goProducts, cart }) {
   try {
     console.log("Sending request..."); // 🔥 ADD
 
-    const res = await fetch("https://ecommerce-backend-v764.onrender.com/orders", {
+    const res = await fetch(`${BASE_URL}/orders`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
