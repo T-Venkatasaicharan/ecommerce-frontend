@@ -72,6 +72,33 @@ Login({ goRegister, goProducts }) {
   const [password, setPassword] = useState("");
   const login = async () => {
 
+  if (!username || !password) {
+    alert("Enter username & password ❌");
+    return;
+  }
+
+  try {
+    const res = await fetch(`${BASE_URL}/users/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ username, password })
+    });
+
+    const data = await res.text();
+    alert(data);
+
+    // ✅ ONLY allow login if success message
+    if (data.toLowerCase().includes("login successful")) {
+      localStorage.setItem("loggedIn", "true");
+      goProducts();
+    }
+
+  } catch (err) {
+    alert("Server error ❌");
+  }
+
   // ✅ Step 1: validation
   if (!username || !password) {
     alert("Enter username & password ❌");
