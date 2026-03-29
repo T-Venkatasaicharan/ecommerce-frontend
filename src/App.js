@@ -1,5 +1,5 @@
+import React, { useState } from 'react';
 import "./App.css"
-import { useState, useEffect } from "react";
 function App() {
   const [page, setPage] = useState(
   localStorage.getItem("loggedIn") ? "products" : "login"
@@ -211,7 +211,7 @@ function Products({ goCart, cart, setCart }) {
 //////////////// CART //////////////////
 function Cart({ goProducts, cart }) {
   const [address, setAddress] = useState("");
-  const [payment, setPayment] = useState("COD");
+  //const [payment, setPayment] = useState("COD");
 
   const total = cart.reduce((sum, item) => sum + item.price, 0);
 
