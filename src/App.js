@@ -70,7 +70,8 @@ function
 Login({ goRegister, goProducts }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const login = async () => {
+
+const register = async () => {
 
   if (!username || !password) {
     alert("Enter username & password ❌");
@@ -78,7 +79,7 @@ Login({ goRegister, goProducts }) {
   }
 
   try {
-    const res = await fetch(`${BASE_URL}/users/login`, {
+    const res = await fetch(`${BASE_URL}/users/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -89,45 +90,10 @@ Login({ goRegister, goProducts }) {
     const data = await res.text();
     alert(data);
 
-    console.log("Response:", data); // 🔍 debug
-
-    // ✅ ONLY allow login when exact success
-    if (data.trim() === "Login successful ✅") {
-      localStorage.setItem("loggedIn", "true");
-      goProducts();
-    }
-
   } catch (err) {
-    console.error(err);
-    alert("Server error ❌");
-  }
-  // ✅ Step 1: validation
-  if (!username || !password) {
-    alert("Enter username & password ❌");
-    return;
-  }
-
-  try {
-    const res = await fetch(`${BASE_URL}/users/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ username, password })
-    });
-
-    const data = await res.text();
-    alert(data);
-
-   if (res.ok) {
-  goProducts();
-}
-  } catch (err) {
-    alert("Server error ❌");
-    console.error(err);
+    alert("Error registering ❌");
   }
 };
-
  return (
   <div className="login-container">
     <div className="login-box">
