@@ -178,6 +178,82 @@ const demoProducts = [
     name: "AirPods Pro",
     price: 50000,
     image: "https://cdn.pixabay.com/photo/2021/02/13/03/30/airpods-6010255_1280.jpg"
+  },
+  {
+    id: 3,
+    name: "Samsung s22",
+    price: 50000,
+    image: "https://cdn.pixabay.com/photo/2022/03/12/09/23/smartphone-7063761_1280.jpg"
+  },
+  {
+    id: 4,
+    name: "Watch",
+    price: 26000,
+    image: "https://cdn.pixabay.com/photo/2017/03/20/15/13/wrist-watch-2159351_1280.jpg"
+  },
+  {
+    id: 5,
+    name: "Olympus CAMERA",
+    price: 150000,
+    image: "https://cdn.pixabay.com/photo/2015/10/20/14/40/camera-997813_1280.jpg"
+  },
+  {
+    id: 6,
+    name: "LG Tv",
+    price: 50000,
+    image: "https://cdn.pixabay.com/photo/2017/04/07/12/58/lion-2210947_1280.jpg"
+  },
+  {
+    id: 7,
+    name: "Apple Watch",
+    price: 760000,
+    image: "https://cdn.pixabay.com/photo/2017/08/02/00/44/lifestyle-2569185_1280.jpg"
+  },
+  {
+    id: 8,
+    name: "H&M Shirt",
+    price: 1999,
+    image: "https://image.hm.com/assets/hm/f6/54/f6547497c93fd708d17f8e7c10d9e554cb26bd0a.jpg?imwidth=1260"
+  },
+  {
+    id: 9,
+    name: "Hoodie",
+    price: 1800,
+    image: "https://cdn.pixabay.com/photo/2018/04/27/04/06/woman-3353711_1280.jpg"
+  },
+  {
+    id: 10,
+    name: "Cooling Glases",
+    price: 20000,
+    image: "https://media.istockphoto.com/id/835943906/photo/studio-shot-on-white-background-blue-sunglasses.jpg?s=2048x2048&w=is&k=20&c=SGtl6JlCZ4Ll9LTboAWovbgeKflXxqpbZMkdbq48ZXw="
+  },
+  {
+    id: 11,
+    name: "T shirt",
+    price: 399,
+    image: "https://cdn.pixabay.com/photo/2016/07/29/04/53/monterrey-1550422_1280.jpg"
+  },
+  {
+    id: 12,
+    name: "Casual Shirt",
+    price: 500,
+    image: "https://cdn.pixabay.com/photo/2018/02/16/14/38/portrait-3157821_1280.jpg"
+  },{
+    id: 13,
+    name: "Red T-Shirt",
+    price: 300,
+    image: "https://cdn.pixabay.com/photo/2022/01/07/01/21/girl-6920625_1280.jpg"
+  },{
+    id: 14,
+    name: "Hand Bag",
+    price: 2300,
+    image: "https://cdn.pixabay.com/photo/2016/11/23/18/12/bag-1854148_1280.jpg"
+  },
+  {
+    id: 15,
+    name: "Alexa",
+    price: 5000,
+    image: "https://cdn.pixabay.com/photo/2020/04/19/15/15/google-home-5064088_1280.jpg"
   }
 ];
 
