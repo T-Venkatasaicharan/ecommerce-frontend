@@ -71,9 +71,10 @@ Login({ goRegister, goProducts }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-const login = async () => {
+const register = async () => {
+
   if (!username || !password) {
-    alert("Enter username & password ❌");
+    alert("Enter username & password ");
     return;
   }
 
@@ -86,15 +87,11 @@ const login = async () => {
       body: JSON.stringify({ username, password })
     });
 
-    if (res.ok) {
-      localStorage.setItem("loggedIn", "true");
-      goProducts();
-    } else {
-      const data = await res.text();
-      alert(data || "Login failed ❌");
-    }
+    const data = await res.text();
+    alert(data);
+
   } catch (err) {
-    alert("Error logging in ❌");
+    alert("Error registering ");
   }
 };
 
@@ -136,7 +133,7 @@ function Register({ goLogin }) {
   const register = async () => {
 
   if (!username || !password) {
-    alert("Enter username & password ❌");
+    alert("Enter username & password ");
     return;
   }
 
@@ -153,7 +150,7 @@ function Register({ goLogin }) {
     alert(data);
 
   } catch (err) {
-    alert("Error registering ❌");
+    alert("Error registering ");
   }
 };
 
@@ -271,7 +268,7 @@ function Products({ goCart, cart, setCart }) {
 
  return (
   <div>
-    <h1 className="title">🛒 Products</h1>
+    <h1 className="title"> Products</h1>
 
     <div className="header">
       <div></div>
@@ -305,17 +302,17 @@ function Cart({ goProducts, cart }) {
   const total = cart.reduce((sum, item) => sum + item.price, 0);
 
  const checkout = async () => {
-  console.log("Checkout clicked"); // 🔥 ADD THIS
+  console.log("Checkout clicked"); //  ADD THIS
 
   if (!address) {
-    alert("Enter address ❌");
+    alert("Enter address ");
     return;
   }
 
   const total = cart.reduce((sum, item) => sum + item.price, 0);
 
   try {
-    console.log("Sending request..."); // 🔥 ADD
+    console.log("Sending request..."); //  ADD
 
     const res = await fetch(`${BASE_URL}/orders`, {
       method: "POST",
@@ -330,15 +327,15 @@ function Cart({ goProducts, cart }) {
     })
   });
 
-    console.log("Response received", res); // 🔥 ADD
+    console.log("Response received", res); //  ADD
 
     if (res.ok) {
-      alert("Order placed successfully 🎉");
+      alert("Order placed successfully ");
     }
 
   } catch (err) {
     console.error("Error:", err);
-    alert("Error placing order ❌");
+    alert("Error placing order ");
   }
 };
 
