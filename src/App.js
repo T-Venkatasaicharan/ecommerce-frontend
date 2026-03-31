@@ -10,7 +10,7 @@ function App() {
   return (
     <div>
 
-      {/* 🔥 NAVBAR (only after login) */}
+      {/* NAVBAR (only after login) */}
       {page !== "login" && page !== "register" && (
         <div className="navbar">
           <h2>Ecommerce</h2>
@@ -26,7 +26,7 @@ function App() {
         </div>
       )}
 
-      {/* 🔥 HERO (only products page) */}
+      {/*HERO (only products page) */}
       {page === "products" && (
         <div className="hero">
           <h1>It's Time to Pick 🛒</h1>
@@ -34,7 +34,7 @@ function App() {
         </div>
       )}
 
-      {/* 🔥 PAGES */}
+      {/*  PAGES */}
       {page === "login" && (
         <Login 
           goRegister={() => setPage("register")} 
@@ -71,8 +71,7 @@ Login({ goRegister, goProducts }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-const register = async () => {
-
+const login = async () => {
   if (!username || !password) {
     alert("Enter username & password ");
     return;
@@ -88,10 +87,22 @@ const register = async () => {
     });
 
     const data = await res.text();
+    console.log("Response:", data);
+
     alert(data);
 
+    //  IMPORTANT FIX
+    if (data.includes("Login successful")) {
+      localStorage.setItem("loggedIn", "true");
+      goProducts();
+    } else {
+      //  WRONG PASSWORD / USER NOT FOUND
+      alert("Login failed ");
+    }
+
   } catch (err) {
-    alert("Error registering ");
+    console.error(err);
+    alert("Server error ");
   }
 };
 
